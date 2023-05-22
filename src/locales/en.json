@@ -1,0 +1,11 @@
+{
+  "messages": {
+    "Job Qualification Program": "Job Qualification Program",
+    "Log in": "Log in",
+    "Welcome": "Welcome",
+    "content": "content"
+  },
+  "actions": {
+    "login": "Log in"
+  }
+}
