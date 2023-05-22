@@ -27,7 +27,17 @@
         >
       </div>
 
-      <div class="flex flex-1 items-center justify-end gap-x-6">
+      <div class="flex flex-1 items-center justify-end gap-x-8">
+        <div class="relative lg:inline md:inline hidden">
+          <div
+            class="absolute left-1/2 top-0 -ml-6 w-0.5 h-full bg-gray-200"
+          ></div>
+          <LanguageDropdown />
+          <div
+            class="absolute left-1/2 top-0 ml-5 w-0.5 h-full bg-gray-200"
+          ></div>
+        </div>
+
         <a
           href="#"
           class="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900"
@@ -108,7 +118,8 @@
 <script setup>
 import { ref } from "vue";
 import { Dialog, DialogPanel } from "@headlessui/vue";
-import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { Bars3Icon, XMarkIcon, LanguageIcon } from "@heroicons/vue/24/outline";
+import LanguageDropdown from "./LanguageDropdown.vue";
 
 // const navigation = [
 //   { name: "Product", href: "#" },
