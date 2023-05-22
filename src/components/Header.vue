@@ -15,7 +15,9 @@
         </a>
       </div>
       <div class="lg:inline hidden">
-        <h1 class="font-bold text-2xl">Job Qualification Program</h1>
+        <h1 class="font-bold text-2xl">
+          {{ $t("messages.Job Qualification Program") }}
+        </h1>
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
         <a
@@ -39,10 +41,14 @@
         </div>
 
         <a
+          @click="login"
+          as="button"
           href="#"
           class="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900"
-          >Log in <span aria-hidden="true">&rarr;</span></a
         >
+          {{ $t("actions.login") }}
+          <span aria-hidden="true">&rarr;</span>
+        </a>
       </div>
       <div class="flex lg:hidden">
         <button
@@ -129,4 +135,20 @@ import LanguageDropdown from "./LanguageDropdown.vue";
 // ];
 
 const mobileMenuOpen = ref(false);
+</script>
+
+<script>
+import { useAuth0 } from "@auth0/auth0-vue";
+
+export default {
+  setup() {
+    const { loginWithRedirect } = useAuth0();
+
+    return {
+      login: () => {
+        loginWithRedirect();
+      },
+    };
+  },
+};
 </script>

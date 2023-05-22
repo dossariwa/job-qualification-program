@@ -20,29 +20,24 @@
         class="absolute right-0 z-10 mt-2 w-50 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
       >
         <div class="py-1">
-          <MenuItem v-slot="{ active }">
-            <a
-              href="#"
+          <MenuItem
+            v-for="lang in languages"
+            :key="lang.code"
+            v-slot="{ active }"
+          >
+            <button
+              @click.prevent="changeLocale(lang.code)"
               :class="[
                 active ? 'bg-gray-100 text-gray-900' : '',
-                'group flex items-center px-4 py-2 text-sm',
+                'group flex items-center px-4 py-2 text-sm w-full',
+                lang.fontClass || '',
               ]"
             >
-              <UnitedStatesIcon class="mr-3 h-5 w-5" aria-hidden="true" />
-              English
-            </a>
-          </MenuItem>
-          <MenuItem v-slot="{ active }">
-            <a
-              href="#"
-              :class="[
-                active ? 'bg-gray-100 text-gray-900' : '',
-                'group flex items-center px-4 py-2 text-sm',
-              ]"
-            >
-              <SaudiArabiaIcon class="mr-3 h-5 w-5" aria-hidden="true" />
-              Arabic
-            </a>
+              <span class="mr-3 h-5 w-5">
+                <component :is="lang.icon" class="h-5 w-5" aria-hidden="true" />
+              </span>
+              {{ lang.name }}
+            </button>
           </MenuItem>
         </div>
       </MenuItems>
@@ -52,17 +47,26 @@
 
 <script setup>
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import {
-  ArchiveBoxIcon,
-  ArrowRightCircleIcon,
-  ChevronDownIcon,
-  DocumentDuplicateIcon,
-  HeartIcon,
-  PencilSquareIcon,
-  TrashIcon,
-  UserPlusIcon,
-} from "@heroicons/vue/20/solid";
 import { LanguageIcon } from "@heroicons/vue/24/outline";
+import { useI18n } from "vue-i18n";
+
 import UnitedStatesIcon from "../components/icons/IconUnitedStates.vue";
 import SaudiArabiaIcon from "../components/icons/IconSaudiArabia.vue";
+
+const { locale, availableLocales } = useI18n();
+
+const languages = [
+  { code: "en", name: "English", icon: UnitedStatesIcon },
+  {
+    code: "ar",
+    name: "Arabic",
+    icon: SaudiArabiaIcon,
+    fontClass: "font-cairo",
+  },
+];
+
+const changeLocale = (selectedLocale) => {
+  localStorage.setItem("language", selectedLocale);
+  locale.value = selectedLocale;
+};
 </script>
