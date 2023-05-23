@@ -28,8 +28,8 @@ app.use(router);
 app.use(i18n);
 app.use(
   createAuth0({
-    domain: "jqp.us.auth0.com",
-    clientId: "6JGsd37CQYrJ9jPtsQKHBjv0df5ieUef",
+    domain: "maaden.us.auth0.com",
+    clientId: "t3BFB9FupHkGqX9O20QEuVUMNcngUrxm",
     authorizationParams: {
       redirect_uri: window.location.origin,
     },

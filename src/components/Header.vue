@@ -40,15 +40,23 @@
           ></div>
         </div>
 
-        <a
-          @click="login"
-          as="button"
-          href="#"
+        <button
+          v-if="!user"
+          @click.prevent="login"
           class="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900"
         >
           {{ $t("actions.login") }}
           <span aria-hidden="true">&rarr;</span>
-        </a>
+        </button>
+
+        <button
+          v-if="user"
+          @click.prevent="logout"
+          class="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900"
+        >
+          {{ $t("actions.logout") }}
+        </button>
+        <Dropdown v-if="user" />
       </div>
       <div class="flex lg:hidden">
         <button
@@ -102,11 +110,12 @@
               >
             </div>
             <div class="py-6">
-              <a
-                href="#"
+              <button
+                @click.prevent="login"
                 class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >Log in
-              </a>
+              >
+                {{ $t("actions.login") }}
+              </button>
             </div>
           </div>
         </div>
@@ -124,8 +133,9 @@
 <script setup>
 import { ref } from "vue";
 import { Dialog, DialogPanel } from "@headlessui/vue";
-import { Bars3Icon, XMarkIcon, LanguageIcon } from "@heroicons/vue/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import LanguageDropdown from "./LanguageDropdown.vue";
+import Dropdown from "./Dropdown.vue";
 
 // const navigation = [
 //   { name: "Product", href: "#" },
@@ -138,17 +148,22 @@ const mobileMenuOpen = ref(false);
 </script>
 
 <script>
-import { useAuth0 } from "@auth0/auth0-vue";
-
 export default {
-  setup() {
-    const { loginWithRedirect } = useAuth0();
-
+  data() {
     return {
-      login: () => {
-        loginWithRedirect();
-      },
+      user: this.$auth0.user,
     };
+  },
+  methods: {
+    login() {
+      this.$auth0.loginWithRedirect();
+    },
+
+    logout() {
+      this.$auth0.logout({
+        logoutParams: { returnTo: window.location.origin },
+      });
+    },
   },
 };
 </script>

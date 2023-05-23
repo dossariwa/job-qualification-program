@@ -6,6 +6,7 @@
     "content": "content"
   },
   "actions": {
-    "login": "Log in"
+    "login": "Log in",
+    "logout": "Logout"
   }
 }
