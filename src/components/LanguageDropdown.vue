@@ -2,7 +2,7 @@
   <Menu as="div" class="relative inline-block text-left">
     <div>
       <MenuButton
-        class="inline-flex w-full justify-center gap-x-1.5 px-3 py-2 text-sm font-semibold"
+        class="inline-flex w-full justify-center gap-x-1.5 px-2 py-2 text-sm font-semibold bg-gray-100 rounded-full"
       >
         <LanguageIcon class="h-4 w-4 scale-125 text-black" aria-hidden="true" />
       </MenuButton>

@@ -1,21 +1,20 @@
 <script setup>
 import Layout from "../components/Layout.vue";
 import Task from "../components/Task.vue";
-import Status from "../components/Status.vue";
+import TaskCreate from "../components/TaskCreate.vue";
 </script>
 
 <template>
   <main class="home-view">
     <Layout>
-      <Task />
-      <Status />
+      <TaskCreate />
     </Layout>
   </main>
 </template>
 
 <script>
 export default {
-  name: "HomeView",
+  name: "TaskView",
   // Other component options...
 };
 </script>

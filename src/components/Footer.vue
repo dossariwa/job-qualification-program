@@ -16,7 +16,12 @@
       </div>
       <div class="mt-8 md:order-1 md:mt-0">
         <p class="text-center text-xs leading-5 text-gray-500">
-          &copy; 2023 MA'ADEN, All rights reserved.
+          &copy; 2023
+          <span class="text-primary-green font-bold">{{
+            $t("text.maaden")
+          }}</span
+          >,
+          {{ $t("text.all rights reserved") }}
         </p>
       </div>
     </div>

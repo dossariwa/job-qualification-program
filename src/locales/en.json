@@ -7,6 +7,19 @@
   },
   "actions": {
     "login": "Log in",
-    "logout": "Logout"
+    "logout": "Logout",
+    "profile": "Profile",
+    "create new task": "Create new task",
+    "create task": "Create task",
+    "show": "Show"
+  },
+  "text": {
+    "last 30 days": "Last 30 days",
+    "you have not added any employees to the program yet as the manager of this employee you can manage employee tasks": "You haven't added any employees to the program yet. As the manager of this employee, you can manage employee tasks.",
+    "add employee task": "Add employee task",
+    "employees previously added to the tasks": "Employees previously added to the tasks",
+    "all rights reserved": "All rights reserved.",
+    "maaden": "MA'ADEN",
+    "enter a badge number": "Enter a badge number"
   }
 }

@@ -7,6 +7,19 @@
   },
   "actions": {
     "login": "تسجيل الدخول",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "profile": "الملف الشخصي",
+    "create new task": "إنشاء مهمة جديدة",
+    "create task": "إنشاء مهمة",
+    "show": "عرض"
+  },
+  "text": {
+    "last 30 days": "آخر 30 يومًا",
+    "you have not added any employees to the program yet as the manager of this employee you can manage employee tasks": "لم تقم بإضافة أي موظفين إلى البرنامج حتى الآن. بصفتك مديرًا لهذا الموظف ، يمكنك إدارة مهام الموظف.",
+    "add employee task": "إضافة مهمة الموظف",
+    "employees previously added to the tasks": "الموظفين الذين سبق إضافتهم إلى المهام",
+    "all rights reserved": "جميع الحقوق محفوظة.",
+    "maaden": "معادن",
+    "enter a badge number": "أدخل رقم الشارة"
   }
 }
