@@ -15,4 +15,9 @@
       </div>
     </div>
   </div>
+  <TaskCreate />
 </template>
+
+<script setup>
+import TaskCreate from "./TaskCreate.vue";
+</script>

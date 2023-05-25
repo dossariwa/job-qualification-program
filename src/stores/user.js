@@ -2,18 +2,20 @@ import { defineStore } from "pinia";
 
 export const useUserStore = defineStore("user", {
   state: () => ({
-    user: null,
+    user: this.$auth0.user,
   }),
-  getters: {
-    getUser: (state) => state.user,
-    isLoggedIn: (state) => !!state.user,
-  },
   actions: {
-    setUser(user) {
-      this.user = user;
+    login(user) {
+      this.$auth0.loginWithRedirect();
     },
-    clearUser() {
-      this.user = null;
+    logout() {
+      this.$auth0.logout({
+        logoutParams: { returnTo: window.location.origin },
+      });
+    },
+
+    isAuth() {
+      return this.user !== null;
     },
   },
 });

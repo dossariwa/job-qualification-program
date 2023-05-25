@@ -83,29 +83,22 @@
               class="absolute right-0 z-10 mt-2 w-50 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             >
               <div class="py-1">
-                <MenuItem
-                  v-for="(nav, index) in navigation"
-                  :key="nav.id"
-                  v-slot="{ active }"
+                <RouterLink
+                  @click.prevent="logout(item.id)"
+                  v-for="(item, index) in navigation"
+                  :key="item.id"
+                  :to="item.href"
+                  class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  <button
-                    @click.prevent="logout(nav.id)"
-                    :class="[
-                      active ? 'bg-gray-100 text-gray-900' : '',
-                      'group flex items-center px-4 py-2 text-sm w-full',
-                      nav.fontClass || '',
-                    ]"
-                  >
-                    <span class="mr-3 h-5 w-5">
-                      <component
-                        :is="nav.icon"
-                        class="h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    </span>
-                    {{ $t(nav.translation) }}
-                  </button>
-                </MenuItem>
+                  <span class="mr-3 h-5 w-5">
+                    <component
+                      :is="item.icon"
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <span>{{ $t(item.translation) }}</span>
+                </RouterLink>
               </div>
             </MenuItems>
           </transition>
@@ -154,13 +147,13 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div v-if="user" class="space-y-2 py-6">
-              <a
-                @click.prevent="logout(links.id)"
+              <RouterLink
+                @click.prevent="logout(item.id)"
                 v-for="(item, index) in links"
                 :key="item.id"
-                :href="item.href"
+                :to="item.href"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >{{ $t(item.translation) }}</a
+                >{{ $t(item.translation) }}</RouterLink
               >
             </div>
             <div class="py-6">
@@ -205,20 +198,33 @@ import {
 import LanguageDropdown from "./LanguageDropdown.vue";
 
 const links = [
-  { id: 1, name: "Profile", href: "#", translation: "actions.profile" },
-  { id: 2, name: "Logout", href: "#", translation: "actions.logout" },
-];
-
-const navigation = [
   {
     id: 1,
     name: "Profile",
+    href: "/profile",
     icon: UserCircleIcon,
     translation: "actions.profile",
   },
   {
     id: 2,
     name: "logout",
+    icon: ArrowRightOnRectangleIcon,
+    translation: "actions.logout",
+  },
+];
+
+const navigation = [
+  {
+    id: 1,
+    name: "Profile",
+    href: "/profile",
+    icon: UserCircleIcon,
+    translation: "actions.profile",
+  },
+  {
+    id: 2,
+    name: "logout",
+    href: "#",
     icon: ArrowRightOnRectangleIcon,
     translation: "actions.logout",
   },
