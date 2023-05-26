@@ -2,7 +2,7 @@
 import { RouterLink, RouterView } from "vue-router";
 </script>
 <script>
-import Wrapper from "./components/Wrapper.vue";
+import Wrapper from "./components/layouts/Wrapper.vue";
 
 export default {
   name: "App",
@@ -14,7 +14,7 @@ export default {
 </script>
 <template>
   <wrapper>
-    <main>
+    <main class="content">
       <RouterView />
     </main>
   </wrapper>

@@ -30,7 +30,7 @@
 
 <script setup>
 import { defineComponent, h } from "vue";
-import LinkedinIcon from "../components/icons/IconLinkedin.vue";
+import LinkedinIcon from "../../components/icons/IconLinkedin.vue";
 const navigation = [
   {
     name: "Linkedin",

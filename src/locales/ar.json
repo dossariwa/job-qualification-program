@@ -3,7 +3,11 @@
     "Job Qualification Program": "برنامج التأهيل الوظيفي",
     "Log in": "دخول",
     "Welcome": "مرحبا",
-    "content": "المحتوى"
+    "content": "المحتوى",
+    "there are four tasks pending": "هناك أربع مهام معلقة",
+    "complete": "مكتمل",
+    "in progress": "في تَقَدم",
+    "pending": "قيد الانتظار"
   },
   "actions": {
     "login": "تسجيل الدخول",
@@ -11,7 +15,10 @@
     "profile": "الملف الشخصي",
     "create new task": "إنشاء مهمة جديدة",
     "create task": "إنشاء مهمة",
-    "show": "عرض"
+    "show": "عرض",
+    "view": "عرض",
+    "edit": "تحرير",
+    "delete": "حذف"
   },
   "text": {
     "last 30 days": "آخر 30 يومًا",
@@ -20,6 +27,8 @@
     "employees previously added to the tasks": "الموظفين الذين سبق إضافتهم إلى المهام",
     "all rights reserved": "جميع الحقوق محفوظة.",
     "maaden": "معادن",
-    "enter a badge number": "أدخل رقم الشارة"
+    "enter a badge number": "أدخل رقم الشارة",
+    "due on": "تاريخ الاستحقاق",
+    "created by": "انشأ من قبل"
   }
 }

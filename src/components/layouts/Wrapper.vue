@@ -1,5 +1,5 @@
 <template>
-  <div :class="appClass">
+  <div calss="content" :class="appClass">
     <slot></slot>
   </div>
 </template>

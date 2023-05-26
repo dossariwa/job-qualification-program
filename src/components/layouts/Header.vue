@@ -9,7 +9,7 @@
           <span class="sr-only">Maaden</span>
           <img
             class="h-8 w-auto"
-            src="../assets/images/maaden.png"
+            src="../../assets/images/maaden.png"
             alt="Maaden"
           />
         </RouterLink>
@@ -130,7 +130,7 @@
             <span class="sr-only">Maaden</span>
             <img
               class="h-8 w-auto"
-              src="../assets/images/maaden.png"
+              src="../../assets/images/maaden.png"
               alt="Maaden"
             />
           </a>
@@ -195,7 +195,7 @@ import {
   UserCircleIcon,
   ArrowRightOnRectangleIcon,
 } from "@heroicons/vue/24/outline";
-import LanguageDropdown from "./LanguageDropdown.vue";
+import LanguageDropdown from "../LanguageDropdown.vue";
 
 const links = [
   {

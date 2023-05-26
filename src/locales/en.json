@@ -3,7 +3,11 @@
     "Job Qualification Program": "Job Qualification Program",
     "Log in": "Log in",
     "Welcome": "Welcome",
-    "content": "content"
+    "content": "content",
+    "there are four tasks pending": "There are four tasks pending",
+    "complete": "Complete",
+    "in progress": "In progress",
+    "pending": "Pending"
   },
   "actions": {
     "login": "Log in",
@@ -11,7 +15,10 @@
     "profile": "Profile",
     "create new task": "Create new task",
     "create task": "Create task",
-    "show": "Show"
+    "show": "Show",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete"
   },
   "text": {
     "last 30 days": "Last 30 days",
@@ -20,6 +27,8 @@
     "employees previously added to the tasks": "Employees previously added to the tasks",
     "all rights reserved": "All rights reserved.",
     "maaden": "MA'ADEN",
-    "enter a badge number": "Enter a badge number"
+    "enter a badge number": "Enter a badge number",
+    "due on": "Due on",
+    "created by": "Created by"
   }
 }

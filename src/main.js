@@ -11,6 +11,13 @@ import router from "./router";
 import en from "./locales/en.json";
 import ar from "./locales/ar.json";
 
+const forceScrollbar = window.addEventListener("DOMContentLoaded", function () {
+  // Add a class to force the scrollbar to be visible
+  var contentElement = document.querySelector(".content");
+  if (contentElement) {
+    contentElement.classList.add("force-scrollbar");
+  }
+});
 const app = createApp(App);
 const i18n = createI18n({
   legacy: false,
@@ -35,5 +42,6 @@ app.use(
     },
   })
 );
+app.use(forceScrollbar);
 
 app.mount("#app");
