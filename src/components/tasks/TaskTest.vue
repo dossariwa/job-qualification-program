@@ -1,4 +1,5 @@
 <template>
+  <wc-toast></wc-toast>
   <div class="mx-auto max-w-lg mb-4 h-1/2">
     <!-- Stepper -->
     <div class="flex items-center justify-between w-50 relative z-0 mb-6">
@@ -288,6 +289,7 @@
         {{ $t(step === 1 ? "actions.nextStep1" : "actions.next") }}
       </button>
       <button
+        v-on:click="handleSuccessToast"
         v-if="step === 3"
         class="flex justify-center items-center px-6 py-2 border text-center select-none transition-all duration-150 rounded-md text-sm text-white ml-auto bg-primary-green hover:bg-primary-green/90 border-primary-green hover:border-primary-green/90 mx-auto"
         @click="finish"
@@ -352,6 +354,7 @@ watch(selectedArea, updateTaskOptions);
 
 <script>
 import axios from "axios";
+import { toast } from "wc-toast";
 
 export default {
   data() {
@@ -419,6 +422,15 @@ export default {
           console.error(error);
           // Handle error here
         });
+    },
+
+    handleSuccessToast() {
+      toast.success("Application reloaded", {
+        theme: {
+          type: "custom",
+          style: { background: "white", color: "black" },
+        },
+      });
     },
   },
   computed: {
