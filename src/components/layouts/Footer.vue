@@ -8,7 +8,7 @@
           v-for="item in navigation"
           :key="item.name"
           :href="item.href"
-          class="text-primary-yellow hover:text-primary-yellow/80"
+          class="text-primary-yellow flex items-center space-x-1 hover:text-primary-yellow/80"
         >
           <span class="sr-only">{{ item.name }}</span>
           <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />

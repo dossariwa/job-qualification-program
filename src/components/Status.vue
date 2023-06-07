@@ -1,5 +1,8 @@
 <template>
   <div class="mt-4">
+    <!-- <h3 class="text-base font-semibold leading-6 text-gray-900">
+      {{ $t("text.last 30 days") }}
+    </h3> -->
     <div class="flex mb-4">
       <label for="number" class="sr-only">Badge number</label>
       <input
@@ -19,15 +22,12 @@
         <FunnelIcon class="h-4 w-5 text-white" />
       </button>
     </div>
-    <!-- 
-    <h3 class="text-base font-semibold leading-6 text-gray-900">
-      {{ $t("text.last 30 days") }}
-    </h3> -->
 
     <ul role="list" class="divide-y divide-gray-100">
       <li
         v-for="task in filteredTasks"
         :key="task.id"
+        :task="task"
         class="flex items-center justify-between gap-x-6 py-5"
       >
         <div class="min-w-0">
@@ -108,9 +108,11 @@
                       active ? 'bg-secondary-red/5' : '',
                       'block px-3 py-1 text-sm leading-6 text-secondary-red',
                     ]"
-                    >{{ $t("actions.delete")
-                    }}<span class="sr-only">, {{ task.badgeNumber }}</span></a
+                    @click="deleteTask(task)"
                   >
+                    {{ $t("actions.delete")
+                    }}<span class="sr-only">, {{ task.badgeNumber }}</span>
+                  </a>
                 </MenuItem>
               </MenuItems>
             </transition>
@@ -118,6 +120,22 @@
         </div>
       </li>
     </ul>
+    <div
+      v-if="filteredTasks.length === 0"
+      class="px-6 py-14 text-center text-sm sm:px-14"
+    >
+      <RectangleStackIcon
+        class="mx-auto h-6 w-6 text-gray-400"
+        aria-hidden="true"
+      />
+      <p class="mt-4 font-semibold text-gray-900">
+        {{ $t("messages.no task found") }}
+      </p>
+      <p class="mt-2 text-gray-500">
+        {{ $t("messages.we could not find anything with that term") }}.
+        {{ $t("messages.please try again") }}
+      </p>
+    </div>
   </div>
   <TaskDetail
     :selectedTask="selectedTask"
@@ -128,12 +146,26 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { EllipsisVerticalIcon } from "@heroicons/vue/20/solid";
-import { FunnelIcon } from "@heroicons/vue/24/outline";
+import { FunnelIcon, RectangleStackIcon } from "@heroicons/vue/24/outline";
 import { useI18n } from "vue-i18n";
 import TaskDetail from "./tasks/TaskDetail.vue";
+import Tasks from "../api/tasks/Tasks.js";
+import Swal from "sweetalert2";
+
+const tasks = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await Tasks.getTasks();
+    tasks.value = response.data;
+    filteredTasks.value = tasks.value;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const { t } = useI18n();
 
@@ -155,62 +187,16 @@ const statuses = {
 // Define helper functions to access translated status and class
 const getStatusMessage = (status) => t(statuses[status][0]);
 const getStatusClass = (status) => statuses[status][1];
-const tasks = [
-  {
-    id: 1,
-    badgeNumber: "5018512",
-    href: "#",
-    status: "Complete",
-    createdBy: "Fahad Hameed AlShammari",
-    dueDate: "March 17, 2023",
-    dueDateTime: "2023-03-17T00:00Z",
-  },
-  {
-    id: 2,
-    badgeNumber: "5020445",
-    href: "#",
-    status: "In progress",
-    createdBy: "Wasmi Abdullah Wasmi AlDossary",
-    dueDate: "May 5, 2023",
-    dueDateTime: "2023-05-05T00:00Z",
-  },
-  {
-    id: 3,
-    badgeNumber: "120644",
-    href: "#",
-    status: "In progress",
-    createdBy: "Fahad Hameed AlShammari",
-    dueDate: "May 25, 2023",
-    dueDateTime: "2023-05-25T00:00Z",
-  },
-  {
-    id: 4,
-    badgeNumber: "123382",
-    href: "#",
-    status: "In progress",
-    createdBy: "Fahad Hameed AlShammari",
-    dueDate: "June 7, 2023",
-    dueDateTime: "2023-06-07T00:00Z",
-  },
-  {
-    id: 5,
-    badgeNumber: "5020704",
-    href: "#",
-    status: "Pending",
-    createdBy: "Mohammad Hassan Hadi AlHokash",
-    dueDate: "June 10, 2023",
-    dueDateTime: "2023-06-10T00:00Z",
-  },
-];
+
 const search = ref("");
 const filteredTasks = ref([]);
 
 function handleSearch() {
   if (!search.value) {
-    filteredTasks.value = tasks;
+    filteredTasks.value = tasks.value; // Access tasks.value
   } else {
     const searchQuery = search.value.toLowerCase();
-    filteredTasks.value = tasks.filter((task) =>
+    filteredTasks.value = tasks.value.filter((task) =>
       task.badgeNumber.toLowerCase().includes(searchQuery)
     );
   }
@@ -231,4 +217,52 @@ function openModal(task) {
 function closeModal(task) {
   modalOpen.value = false;
 }
+// Add the deleteTask method to your script setup
+async function deleteTask(task) {
+  const result = await Swal.fire({
+    title: t("messages.are you sure"),
+    text: t("messages.you will not be able to recover this task"),
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#8D3F2B",
+    cancelButtonColor: "#0093B2",
+    confirmButtonText: t("actions.delete"),
+    cancelButtonText: t("actions.cancel"),
+  });
+
+  if (result.isConfirmed) {
+    // Perform the delete operation
+    try {
+      // Make the API request to delete the task
+      await Tasks.deleteTask(task.id);
+
+      // Remove the deleted task from the tasks array
+      tasks.value = tasks.value.filter((t) => t.id !== task.id);
+
+      Swal.fire({
+        icon: "success",
+        titel: t("messages.deleted"),
+        text: t("messages.the task has been deleted"),
+        timer: 2000,
+        showCancelButton: false,
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: t("messages.error"),
+        text: t("messages.an error occurred while deleting the task"),
+        timer: 2000,
+        showCancelButton: false,
+        showConfirmButton: false,
+      });
+    }
+  }
+}
 </script>
+
+<style>
+body {
+  font-family: "Cairo", sans-serif;
+}
+</style>

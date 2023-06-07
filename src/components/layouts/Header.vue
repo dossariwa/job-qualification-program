@@ -21,12 +21,12 @@
       </div>
 
       <div class="flex flex-1 items-center justify-end gap-x-8">
-        <div class="relative lg:inline md:inline hidden">
+        <div class="relative lg:inline md:inline">
           <LanguageDropdown />
         </div>
 
         <button
-          v-if="!user"
+          as="a"
           @click.prevent="login"
           class="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900"
         >
@@ -126,14 +126,14 @@
         class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
       >
         <div class="flex items-center gap-x-6">
-          <a href="#" class="-m-1.5 p-1.5">
+          <RouterLink to="/" class="-m-1.5 p-1.5">
             <span class="sr-only">Maaden</span>
             <img
               class="h-8 w-auto"
               src="../../assets/images/maaden.png"
               alt="Maaden"
             />
-          </a>
+          </RouterLink>
 
           <button
             type="button"
@@ -231,25 +231,4 @@ const navigation = [
 ];
 
 const mobileMenuOpen = ref(false);
-</script>
-
-<script>
-export default {
-  data() {
-    return {
-      user: this.$auth0.user,
-    };
-  },
-  methods: {
-    login() {
-      this.$auth0.loginWithRedirect();
-    },
-
-    logout() {
-      this.$auth0.logout({
-        logoutParams: { returnTo: window.location.origin },
-      });
-    },
-  },
-};
 </script>

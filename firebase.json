@@ -1,0 +1,10 @@
+{
+  "firestore": {
+    "rules": {
+      "users": {
+        ".read": true,
+        ".write": "request.auth != null"
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-</script>
+<script setup></script>
+
 <script>
 import Wrapper from "./components/layouts/Wrapper.vue";
 
@@ -9,10 +8,11 @@ export default {
   components: {
     Wrapper,
   },
-  // Other component options...
 };
 </script>
+
 <template>
+  <wc-toast></wc-toast>
   <wrapper>
     <main class="content">
       <RouterView />
