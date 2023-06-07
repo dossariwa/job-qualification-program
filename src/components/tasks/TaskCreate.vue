@@ -1,4 +1,5 @@
 <template>
+  <TaskForm />
   <nav class="mx-auto max-w-lg mb-4" aria-label="Progress">
     <ol role="list" class="flex items-center justify-center">
       <li
@@ -99,19 +100,4 @@
   </div>
 </template>
 
-<script setup>
-import { CheckIcon } from "@heroicons/vue/20/solid";
-import { ref } from "vue";
-
-const steps = [
-  { name: "Step 1", href: "#", status: "complete" },
-  { name: "Step 2", href: "#", status: "current" },
-  { name: "Step 3", href: "#", status: "upcoming" },
-];
-
-const progress = ref(1); // Current step progress
-
-function handleClick() {
-  progress.value += 1;
-}
-</script>
+<script setup></script>

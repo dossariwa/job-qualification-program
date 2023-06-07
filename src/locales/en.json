@@ -7,7 +7,21 @@
     "there are four tasks pending": "There are four tasks pending",
     "complete": "Complete",
     "in progress": "In progress",
-    "pending": "Pending"
+    "pending": "Pending",
+    "no task found": "No task found",
+    "we could not find anything with that term": "We couldn’t find anything with that term",
+    "please try again": "Please try again",
+    "checking for competency record": "Checking for competency record",
+    "upload the documents": "Upload the documents",
+    "upload the documents assigned to your assignment as it is": "Upload the documents assigned to your assignment as it is",
+    "you will not be able to recover this task": "You will not be able to recover this task!",
+    "are you sure": "Are you sure?",
+    "an error occurred while deleting the task": "An error occurred while deleting the task.",
+    "error": "Error",
+    "please wait": "Please wait",
+    "documents are now being uploaded and verified": "Documents are now being uploaded and verified",
+    "the task has been deleted": "The task has been deleted.",
+    "deleted": "Deleted!"
   },
   "actions": {
     "login": "Log in",
@@ -18,7 +32,13 @@
     "show": "Show",
     "view": "View",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "approve": "Approve",
+    "next": "Next",
+    "nextStep1": "Next",
+    "previous": "Previous",
+    "finish": "Finish"
   },
   "text": {
     "last 30 days": "Last 30 days",
@@ -29,6 +49,12 @@
     "maaden": "MA'ADEN",
     "enter a badge number": "Enter a badge number",
     "due on": "Due on",
-    "created by": "Created by"
+    "created by": "Created by",
+    "department": "Department",
+    "area": "Area",
+    "task": "Task",
+    "demonstration skills": "Demonstration skills",
+    "oral/presentation skills": "Oral/Presentation Skills",
+    "and": "and"
   }
 }

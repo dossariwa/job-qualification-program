@@ -7,7 +7,21 @@
     "there are four tasks pending": "هناك أربع مهام معلقة",
     "complete": "مكتمل",
     "in progress": "في تَقَدم",
-    "pending": "قيد الانتظار"
+    "pending": "قيد الانتظار",
+    "no task found": "لم يتم العثور على مهمة",
+    "we could not find anything with that term": "لم نتمكن من العثور على أي شيء بهذا المصطلح",
+    "please try again": "حاول مرة اخرى",
+    "checking for competency record": "التحقق من سجل الكفاءة",
+    "upload the documents": "قم بتحميل المستندات",
+    "upload the documents assigned to your assignment as it is": "قم بتحميل المستندات المخصصة لمهمتك كما هي",
+    "you will not be able to recover this task": "لن تتمكن من استعادة هذه المهمة",
+    "are you sure": "هل انت متأكد؟",
+    "an error occurred while deleting the task": ".حدث خطأ أثناء حذف المهمة",
+    "error": "خطأ",
+    "please wait": "انتظر من فضلك",
+    "documents are now being uploaded and verified": "يتم الآن تحميل المستندات والتحقق منها",
+    "the task has been deleted": ".تم حذف المهمة",
+    "deleted": "!تم الحذف"
   },
   "actions": {
     "login": "تسجيل الدخول",
@@ -18,7 +32,13 @@
     "show": "عرض",
     "view": "عرض",
     "edit": "تحرير",
-    "delete": "حذف"
+    "delete": "حذف",
+    "cancel": "إلغاء",
+    "approve": "وافق",
+    "next": "التالي",
+    "nextStep1": "التالي",
+    "previous": "الخلف",
+    "finish": "إنهاء"
   },
   "text": {
     "last 30 days": "آخر 30 يومًا",
@@ -29,6 +49,12 @@
     "maaden": "معادن",
     "enter a badge number": "أدخل رقم الشارة",
     "due on": "تاريخ الاستحقاق",
-    "created by": "انشأ من قبل"
+    "created by": "انشأ من قبل",
+    "department": "القسم",
+    "area": "المنطقة",
+    "task": "المهمة",
+    "demonstration skills": "مهارات العرض",
+    "oral/presentation skills": "مهارات العرض الشفوي / التقديم",
+    "and": "و"
   }
 }
